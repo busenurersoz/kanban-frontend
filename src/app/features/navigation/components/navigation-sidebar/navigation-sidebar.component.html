@@ -1,0 +1,131 @@
+<!-- <div
+  *ngIf="currentProject"
+  class="project-info"
+  [ngClass]="isCollapsed ? 'justify' : ''"
+>
+  <img [src]="currentProject?.avatarUrl" alt="Project logo" />
+  <div class="content" [ngClass]="isCollapsed ? 'opacity-0' : 'opacity-1'">
+    <h2>{{ currentProject?.name }}</h2>
+    <span>{{ currentProject?.category }}</span>
+  </div>
+</div> -->
+<ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+  <li
+    nz-menu-item
+    nz-tooltip
+    nzTooltipPlacement="right"
+    [nzTooltipTitle]="isCollapsed ? 'Kanban board' : ''"
+    nzMatchRouter
+  >
+    <i nz-icon nzType="appstore"></i>
+    <button
+      nz-button
+      nzType="text"
+      nz-dropdown
+      [nzDropdownMenu]="workspaceMenu"
+    >
+      Workspace
+      <i nz-icon nzType="down"></i>
+    </button>
+    <nz-dropdown-menu #workspaceMenu="nzDropdownMenu">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-group nzTitle="Recent">
+          <ul>
+            <li
+              nz-menu-item
+              *ngFor="let workspace of workspaces$ | async"
+              (click)="changeCurrentWorkspace(workspace.id)"
+            >
+              <div class="project-info">
+                <!-- <img [src]="workspace.avatarUrl" alt="Project logo" /> -->
+                <div class="content">
+                  <span
+                    >{{ workspace.name }} ({{
+                      workspace.key | uppercase
+                    }})</span
+                  >
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <nz-divider></nz-divider>
+        <li nz-menu-item routerLink="workspaces/all">View all workspaces</li>
+        <li nz-menu-item routerLink="workspaces/new">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>Create workspace
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </li>
+
+  <li
+    nz-menu-item
+    nz-tooltip
+    nzTooltipPlacement="right"
+    [nzTooltipTitle]="isCollapsed ? 'Kanban board' : ''"
+    nzMatchRouter
+  >
+    <i nz-icon nzType="appstore"></i>
+
+    <button
+      nz-button
+      nzType="text"
+      nzTrigger="click"
+      nz-dropdown
+      [nzDropdownMenu]="projectsMenu"
+    >
+      Projects
+      <i nz-icon nzType="down"></i>
+    </button>
+
+    <nz-divider></nz-divider>
+
+    <nz-dropdown-menu #projectsMenu="nzDropdownMenu">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-group nzTitle="Recent">
+          <ul>
+            <li nz-menu-item *ngFor="let project of projects$ | async">
+              <div class="project-info" (click)="goToProject(project)">
+                <img [src]="project.avatarUrl" alt="Project logo" />
+                <div class="content">
+                  <span
+                    >{{ project.name }} ({{ project.key | uppercase }})</span
+                  >
+                  <span>{{ project.category }} project</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <nz-divider></nz-divider>
+        <li
+          nz-menu-item
+          [routerLink]="'workspaces/' + currentWorkspace?.id + '/projects'"
+        >
+          View all projects
+        </li>
+        <li
+          nz-menu-item
+          [routerLink]="'workspaces/' + currentWorkspace?.id + '/projects/new'"
+        >
+          <i nz-icon nzType="plus" nzTheme="outline"></i>Create project
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </li>
+
+  <!-- <li nz-submenu nzTitle="Project settings" nzIcon="setting">
+    <ul>
+      <li
+        nz-menu-item
+        [routerLink]="['/projects', currentProject?.id, 'settings', 'details']"
+        nzMatchRouter
+      >
+        Details
+      </li>
+      <li nz-menu-item routerLink="projects/settings/people" nzMatchRouter>
+        People
+      </li>
+    </ul>
+  </li> -->
+</ul>

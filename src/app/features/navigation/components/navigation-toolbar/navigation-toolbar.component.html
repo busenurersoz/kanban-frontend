@@ -1,0 +1,139 @@
+<div class="app-header">
+  <div class="logo" routerLink="/">
+    <img src="assets/logo.png" alt="Project logo" />
+    <span>Projectopia</span>
+  </div>
+
+  <div class="nav-options" *ngIf="projects$ | async">
+    <a
+      nz-button
+      nzType="text"
+      nzTrigger="click"
+      routerLink="/workspaces/myWorkspace"
+      class="myWorkspace"
+    >
+      My Workspace
+    </a>
+  </div>
+  <!-- <div class="nav-options" *ngIf="projects$ | async">
+    <button
+      nz-button
+      nzType="text"
+      nzTrigger="click"
+      nz-dropdown
+      [nzDropdownMenu]="projectsMenu"
+    >
+      Projects
+      <i nz-icon nzType="down"></i>
+    </button>
+    <nz-dropdown-menu #projectsMenu="nzDropdownMenu">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-group nzTitle="Recent">
+          <ul>
+            <li
+              nz-menu-item
+              *ngFor="let project of projects$ | async"
+              (click)="changeCurrentProject(project.id)"
+            >
+              <div class="project-info">
+                <img [src]="project.avatarUrl" alt="Project logo" />
+                <div class="content">
+                  <span
+                    >{{ project.name }} ({{ project.key | uppercase }})</span
+                  >
+                  <span>{{ project.category }} project</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <nz-divider></nz-divider>
+        <li nz-menu-item routerLink="projects/all">View all projects</li>
+        <li nz-menu-item routerLink="projects/new">
+          <i nz-icon nzType="plus" nzTheme="outline"></i>Create project
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </div> -->
+  <!-- <div class="nav-options">
+    <button
+      nz-button
+      nzType="text"
+      nzTrigger="click"
+      nz-dropdown
+      [nzDropdownMenu]="peopleMenu"
+      [nzOverlayStyle]="{ 'min-width': '180px' }"
+    >
+      People
+      <i nz-icon nzType="down"></i>
+    </button>
+    <nz-dropdown-menu #peopleMenu="nzDropdownMenu">
+      <ul nz-menu nzMode="horizontal">
+        <li nz-menu-group nzTitle="Your Collaborators">
+          <ul>
+            <li nz-menu-item class="toggle-on-hover">
+              <i nz-icon nzType="plus" nzTheme="outline"></i>
+              <span>Invite a teammate</span>
+              <span class="not-implemented">Not implemented</span>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-group nzTitle="Your Teams">
+          <ul>
+            <li nz-menu-item class="toggle-on-hover">
+              <i nz-icon nzType="plus" nzTheme="outline"></i>
+              <span>Start a team</span>
+              <span class="not-implemented">Not implemented</span>
+            </li>
+          </ul>
+        </li>
+        <nz-divider></nz-divider>
+        <li nz-menu-item class="toggle-on-hover">
+          <span>Search people and teams</span>
+          <span class="not-implemented">Not implemented</span>
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+  <div class="create-issue-button">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="openCreateIssueModal()"
+      [disabled]="(isCurrentWorkspace$ | async) === false"
+    >
+      Create
+    </button>
+  </div> -->
+  <div class="nav-options">
+    <div class="avatar-container">
+      <nz-avatar
+        nz-tooltip
+        [nzTooltipTitle]="currentUser?.name"
+        [nzSrc]="'assets/user.png'"
+        nzTooltipPlacement="rightBottom"
+        nz-dropdown
+        [nzDropdownMenu]="userMenu"
+        [nzOverlayStyle]="{ 'min-width': '138px' }"
+        nzTrigger="click"
+      ></nz-avatar>
+    </div>
+    <nz-dropdown-menu #userMenu="nzDropdownMenu" nzPlacement="bottomRight">
+      <ul nz-menu class="user-menu">
+        <li nz-menu-item class="toggle-on-hover">
+          <span>Profile</span>
+          <span class="not-implemented">Not implemented</span>
+        </li>
+        <li nz-menu-item class="toggle-on-hover">
+          <span>Account settings</span>
+          <span class="not-implemented">Not implemented</span>
+        </li>
+        <nz-divider></nz-divider>
+        <li nz-menu-item class="toggle-on-hover">
+          <span>Log out</span>
+          <span class="not-implemented">Not implemented</span>
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+</div>

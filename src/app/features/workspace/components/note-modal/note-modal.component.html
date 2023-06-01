@@ -1,0 +1,58 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  [formGroup]="noteForm"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-label nzRequired>Note</nz-form-label>
+    <nz-form-control nzHasFeedback [nzErrorTip]="summaryErrorTempl">
+      <textarea nz-input formControlName="label" rows="5"></textarea>
+      <ng-template #summaryErrorTempl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          The summary cannot be empty
+        </ng-container>
+        <ng-container *ngIf="control.hasError('minlength')">
+          You must enter at least 5 characters
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- <nz-form-item>
+    <nz-form-label>Note</nz-form-label>
+    <nz-form-control>
+      <quill-editor
+        formControlName="label"
+        [modules]="editorOptions"
+        format="object"
+        [styles]="{ 'min-height': '200px' }"
+      ></quill-editor>
+      <ng-template #summaryErrorTempl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          The summary cannot be empty
+        </ng-container>
+        <ng-container *ngIf="control.hasError('minlength')">
+          You must enter at least 5 characters
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item> -->
+
+  <nz-form-item>
+    <nz-form-control>
+      <div class="action-buttons">
+        <button nz-button (click)="closeModal()">Cancel</button>
+        <button
+          type="submit"
+          nz-button
+          nzType="primary"
+          [nzLoading]="isLoading"
+          [disabled]="noteForm?.invalid"
+        >
+          {{ note ? "Save" : "Create" }}
+        </button>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+</form>

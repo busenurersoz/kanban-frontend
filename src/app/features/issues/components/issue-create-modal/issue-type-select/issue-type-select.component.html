@@ -1,0 +1,49 @@
+<div [formGroup]="form">
+  <nz-select formControlName="type" [nzCustomTemplate]="default">
+    <nz-option
+      nzCustomContent
+      *ngFor="let type of issueTypes"
+      [nzValue]="type.value"
+    >
+      <div class="issue-type-select">
+        <app-svg-icon
+          *ngIf="type.value !== 'Meeting'"
+          [name]="type.icon"
+          [size]="18"
+        ></app-svg-icon>
+        <img
+          *ngIf="type.value === 'Meeting'"
+          class="pl-4"
+          src="assets/meeting.jpg"
+          width="20"
+          height="auto"
+          alt=""
+        />
+        <span [class.issueTypeIcon]="type.value === 'Meeting'">{{
+          type.value
+        }}</span>
+      </div>
+    </nz-option>
+  </nz-select>
+
+  <ng-template #default let-selected>
+    <div class="issue-type-select">
+      <app-svg-icon
+        *ngIf="selected.nzValue !== 'Meeting'"
+        [name]="getIssueTypeIcon(selected.nzValue)"
+        [size]="18"
+      ></app-svg-icon>
+      <img
+        *ngIf="selected.nzValue === 'Meeting'"
+        class="pl-4"
+        src="assets/meeting.jpg"
+        width="20"
+        height="auto"
+        alt=""
+      />
+      <span [class.issueTypeIcon]="selected.nzValue === 'Meeting'">{{
+        selected.nzValue
+      }}</span>
+    </div>
+  </ng-template>
+</div>

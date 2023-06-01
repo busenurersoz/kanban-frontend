@@ -1,0 +1,116 @@
+.mat-simple-snackbar {
+  color: #fff;
+}
+
+.mat-snack-bar-container {
+  // background: $primary !important;
+  text-align: center;
+}
+
+.mat-simple-snackbar {
+  display: inline-block !important;
+}
+
+.mat-button,
+.mat-flat-button,
+.mat-icon-button,
+.mat-stroked-button,
+.form-control,
+button {
+  // border-radius: 0 !important;
+}
+
+.mat-icon-button {
+  border-radius: 50% !important;
+}
+.mat-radio-label-content {
+  padding-top: 1px;
+}
+
+.table-container {
+  overflow: auto;
+}
+
+.mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+.mat-input-element {
+  border: 1px solid #ced4da !important;
+}
+.mat-drawer-inner-container {
+  overflow: hidden !important;
+}
+mat-dialog-container.mat-dialog-container {
+  padding: 0;
+}
+.mat-datepicker-content {
+  margin: 0 !important;
+}
+.mat-datepicker-content-touch {
+  margin: 0 !important;
+}
+.mat-checkbox-inner-container {
+  margin: 0 !important;
+}
+
+.mat-tab-label-container {
+  .mat-ripple {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold !important;
+    font-size: 12px;
+    margin: 0 1px;
+  }
+
+  .mat-tab-label-active {
+    font-weight: bold !important;
+    opacity: 1 !important;
+
+    .mat-tab-label-content {
+      z-index: 2;
+      font-size: 15px;
+    }
+  }
+}
+
+.custom-tab .mat-tab-label-container {
+  .mat-tab-label-active {
+    background-color: #1b5e20 !important;
+
+    .mat-tab-label-content {
+      color: white !important;
+    }
+  }
+}
+
+.mat-error {
+  font-size: 10px !important;
+}
+
+.mat-form-field-infix {
+  border-bottom: 1px solid grey;
+}
+
+.mat-input-element {
+  border: none !important;
+}
+
+.cdk-overlay-container {
+  .mat-menu-panel {
+    max-width: fit-content !important;
+    overflow-x: hidden;
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+}
+
+.mat-radio-outer-circle {
+  border-color: rgb(86, 85, 91);
+}
+
+.mat-radio-checked {
+  .mat-radio-outer-circle {
+    border-color: rgb(76, 158, 9);
+  }
+}

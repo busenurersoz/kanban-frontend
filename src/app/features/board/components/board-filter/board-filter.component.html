@@ -1,0 +1,53 @@
+<form nz-form [nzLayout]="'inline'" [formGroup]="filterForm">
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzSuffixIcon="search">
+        <input formControlName="filterQuery" nz-input />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+<div class="avatar-group">
+  <div
+    class="avatar"
+    *ngFor="let user of assignedUsers$ | async"
+    [class.is-active]="isUserSelected(user.id)"
+    nz-tooltip
+    [nzTooltipTitle]="user.name"
+  >
+    <nz-avatar
+      nzIcon="user"
+      [nzSrc]="user.avatarUrl"
+      (click)="toggleUser(user.id)"
+    ></nz-avatar>
+  </div>
+  <div
+    class="avatar"
+    [class.is-active]="isUserSelected()"
+    nz-tooltip
+    nzTooltipTitle="Unassigned"
+  >
+    <nz-avatar nzIcon="user" (click)="toggleUser()"></nz-avatar>
+  </div>
+</div>
+
+<button
+  nz-button
+  [class.is-active]="onlyMyIssues | async"
+  (click)="toggleOnlyMyIssues()"
+>
+  Only My Issues
+</button>
+<button
+  nz-button
+  [class.is-active]="recentlyUpdatedIssues | async"
+  (click)="toggleRecentlyUpdatedIssues()"
+>
+  Recently Updated
+</button>
+
+<ng-container *ngIf="anyFilter | async">
+  <nz-divider nzType="vertical"></nz-divider>
+  <button nz-button (click)="clearAll()">Clear all</button>
+</ng-container>

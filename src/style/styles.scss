@@ -1,0 +1,216 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
+@import "./font-awesome/css/all.css";
+@import "bootstrap/scss/bootstrap.scss";
+@import "./material";
+
+.menushadow {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.menuShadow {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.28);
+  -moz-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.28);
+  -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.28);
+  -ms-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.28);
+  -o-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.28);
+}
+
+.image-responsive {
+  width: 100%;
+  height: auto;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.white-color {
+  color: white !important;
+}
+
+.white-back {
+  background-color: white !important;
+}
+
+.warn-back {
+  background-color: rgb(171, 3, 3);
+}
+
+.warn-color {
+  color: rgb(171, 3, 3);
+}
+
+.success-back {
+  background-color: green;
+}
+
+.success-color {
+  color: green;
+}
+
+.gray-color {
+  color: gray !important;
+}
+
+.curve {
+  border-radius: 10px !important;
+}
+
+.lightgray-back {
+  background-color: rgb(212, 209, 209) !important;
+}
+
+button {
+  outline: none !important;
+}
+
+.text-xs {
+  font-size: 0.75rem !important; /* 12px */
+  line-height: 1rem !important; /* 16px */
+}
+
+.text-sm {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.25rem !important; /* 20px */
+}
+
+.text-xs {
+  font-size: 0.75rem !important; /* 12px */
+  line-height: 1rem !important; /* 16px */
+}
+.text-sm {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.25rem !important; /* 20px */
+}
+.text-base {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.5rem !important; /* 24px */
+}
+.text-lg {
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 1.75rem !important; /* 28px */
+}
+.text-xl {
+  font-size: 1.25rem !important; /* 20px */
+  line-height: 1.75rem !important; /* 28px */
+}
+.text-2xl {
+  font-size: 1.5rem !important; /* 24px */
+  line-height: 2rem !important; /* 32px */
+}
+.text-3xl {
+  font-size: 1.875rem !important; /* 30px */
+  line-height: 2.25rem !important; /* 36px */
+}
+.text-4xl {
+  font-size: 2.25rem !important; /* 36px */
+  line-height: 2.5rem !important; /* 40px */
+}
+.text-5xl {
+  font-size: 3rem !important; /* 48px */
+  line-height: 1 !important;
+}
+.text-6xl {
+  font-size: 3.75rem !important; /* 60px */
+  line-height: 1 !important;
+}
+.text-7xl {
+  font-size: 4.5rem !important; /* 72px */
+  line-height: 1 !important;
+}
+.text-8xl {
+  font-size: 6rem !important; /* 96px */
+  line-height: 1 !important;
+}
+.text-9xl {
+  font-size: 8rem !important; /* 128px */
+  line-height: 1 !important;
+}
+
+.rounded-none {
+  border-radius: 0;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem !important;
+}
+
+.rounded {
+  border-radius: 0.25rem !important;
+}
+
+.rounded-md {
+  border-radius: 0.375rem !important;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.cursor-unset {
+  cursor: unset !important;
+}
+
+.font-italic {
+  font-style: italic !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ant-layout-footer {
+  padding: 1px !important;
+  background: #427acd !important;
+}
+
+.ant-layout-content {
+  overflow-x: hidden !important;
+}
+
+.ant-divider-horizontal {
+  // display: flex;
+  // clear: both;
+  // width: 100%;
+  // min-width: 100%;
+  margin: 10px 0 !important;
+}
+/* For WebKit based browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(56, 101, 129);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+}

@@ -1,0 +1,31 @@
+<span
+  class="column-title"
+  [class.backlog]="status === 'Backlog'"
+  [class.in-progress]="status === 'InProgress'"
+  [class.test]="status === 'Test'"
+  [class.in-review]="status === 'InReview'"
+  [class.done]="status === 'Done'"
+>
+  <span>{{ status | issueStatus }}</span>
+  <ng-container *ngIf="anyFilter | async"
+    >{{ totalIssuesFiltered | async }} of
+  </ng-container>
+  {{ issuesCount$ | async }}
+</span>
+
+<div *ngIf="issues$ | async as issues" class="column">
+  <div
+    cdkDropList
+    [cdkDropListData]="issues"
+    [id]="status"
+    (cdkDropListDropped)="drop($event)"
+    class="column-list p-3"
+  >
+    <app-issue-card
+      *ngFor="let issue of issues"
+      [issue]="issue"
+      cdkDrag
+      [cdkDragData]="issue"
+    ></app-issue-card>
+  </div>
+</div>

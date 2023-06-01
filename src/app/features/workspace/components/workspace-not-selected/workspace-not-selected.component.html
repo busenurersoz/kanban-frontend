@@ -1,0 +1,12 @@
+<div class="empty">
+  <nz-empty [nzNotFoundContent]="contentTpl" [nzNotFoundFooter]="footerTpl">
+    <ng-template #contentTpl>
+      <span> Select a workspace or</span>
+    </ng-template>
+    <ng-template #footerTpl>
+      <button nz-button nzType="primary" routerLink="/workspace/new">
+        Create workspace
+      </button>
+    </ng-template>
+  </nz-empty>
+</div>

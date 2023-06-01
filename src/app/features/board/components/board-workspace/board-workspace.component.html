@@ -1,0 +1,132 @@
+<div id="board-workspace" class="row h-100 m-0">
+  <div class="col-4 px-4">
+    <div class="h-100 meetings">
+      <span class="workspace-column-title w-title"> MEETINGS </span>
+      <div class="workspace-board w-board">
+        <ul *ngIf="issues$ | async as issues">
+          <li *ngFor="let issue of issues" class="mt-2">
+            <app-issue-card [issue]="issue" [isMeeting]="true"></app-issue-card>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 px-4">
+    <div class="h-50 to-do">
+      <span class="workspace-column-title w-title"> TO DO </span>
+      <div class="workspace-board w-board">
+        <button nz-button class="createNewButton" (click)="openTodoModal()">
+          + add new To Do
+        </button>
+
+        <ul
+          class="todos"
+          style="padding-top: 5px"
+          *ngIf="todos$ | async as todos"
+        >
+          <li class="todo row m-0 mt-2" *ngFor="let todo of todos">
+            <div class="col d-flex">
+              <input
+                type="checkbox"
+                [id]="todo.id"
+                [name]="todo.id"
+                [value]="todo.checked"
+                [checked]="todo.checked"
+                (change)="updateTodoChecked(todo, $event)"
+              />
+              <label [for]="todo.id" style="padding-left: 5px; font-size: 15px">
+                {{ todo.label }}</label
+              >
+            </div>
+            <div class="col-auto d-flex">
+              <span
+                class="pr-2 pointer"
+                style="width: 20px"
+                (click)="deleteTodo(todo)"
+              >
+                <i
+                  class="fa fa-times"
+                  aria-hidden="true"
+                  style="color: brown"
+                ></i>
+              </span>
+              <span class="pointer" (click)="openTodoModal(todo)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="h-50 my-notes">
+      <span class="workspace-column-title w-title"> MY NOTES</span>
+      <div class="workspace-board w-board">
+        <button nz-button class="createNewButton" (click)="openNoteModal()">
+          + add new Note
+        </button>
+
+        <ul
+          *ngIf="notes$ | async as notes"
+          class="notes"
+          style="padding-top: 5px"
+        >
+          <li class="note row m-0 mt-2" *ngFor="let note of notes">
+            <div class="col d-flex">
+              <label [for]="note.id" style="padding-left: 5px; font-size: 15px">
+                {{ note.label }}</label
+              >
+            </div>
+            <div class="col-auto d-flex">
+              <span
+                class="pr-2 pointer"
+                style="width: 20px"
+                (click)="deleteNote(note)"
+              >
+                <i
+                  class="fa fa-times"
+                  aria-hidden="true"
+                  style="color: brown"
+                ></i>
+              </span>
+              <span class="pointer" (click)="openNoteModal(note)">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 px-4">
+    <div class="h-25 progresss">
+      <span class="workspace-column-title w-title"> PROGRESS </span>
+      <div class="workspace-board w-board d-flex justify-content-center">
+        <ul class="row p-2 justify-content-center">
+          <li
+            *ngFor="let item of items"
+            class="p-1 mx-1 slot"
+            [class.slot-active]="item.active"
+          ></li>
+        </ul>
+        <p class="m-0 text-center" style="position: absolute; bottom: 0">
+          ({{ weeklyIssuesDoneNumber }} of {{ weeklyIssuesNumber }})
+        </p>
+      </div>
+    </div>
+
+    <div class="h-75 up-working-works">
+      <span class="workspace-column-title w-title"> UP WORKING WORKS</span>
+      <div class="workspace-board w-board">
+        <ul *ngIf="upcomingIssues$ | async as issues">
+          <li *ngFor="let issue of issues" class="mt-2">
+            <app-issue-card
+              [issue]="issue"
+              [isUpcoming]="true"
+            ></app-issue-card>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

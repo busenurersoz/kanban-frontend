@@ -1,0 +1,55 @@
+<div class="issue-card">
+  <div (click)="openIssueDetailModal(issue.id)" class="issue">
+    <p>
+      {{ issue.title }}
+    </p>
+    <div class="bottom-section">
+      <div class="status">
+        <app-svg-icon
+          *ngIf="(issueTypeIcon | async) !== 'meeting'"
+          [name]="issueTypeIcon | async"
+          nz-tooltip
+          [nzTooltipMouseEnterDelay]="0.3"
+          [nzTooltipTitle]="issue.type"
+          nzTooltipPlacement="bottom"
+          [size]="20"
+        >
+        </app-svg-icon>
+
+        <img
+          *ngIf="(issueTypeIcon | async) === 'meeting'"
+          class="pl-4"
+          src="assets/meeting.jpg"
+          width="20"
+          height="auto"
+          alt=""
+        />
+
+        <app-svg-icon
+          [name]="priorityIcon | async"
+          nz-tooltip
+          [nzTooltipMouseEnterDelay]="0.3"
+          [nzTooltipTitle]="issue.priority"
+          nzTooltipPlacement="bottom"
+          [size]="20"
+        >
+        </app-svg-icon>
+      </div>
+      <div class="assignee">
+        <span class="issue-name"
+          >{{ issue.projectKey | uppercase }}-{{ issue.key }}</span
+        >
+        <nz-avatar-group>
+          <nz-avatar
+            *ngFor="let user of issue.assignees"
+            nzIcon="user"
+            nzSrc="{{ user?.avatarUrl }}"
+            nz-tooltip
+            nzTooltipTitle="Assignee: {{ user?.name }}"
+            nzTooltipPlacement="bottom"
+          ></nz-avatar>
+        </nz-avatar-group>
+      </div>
+    </div>
+  </div>
+</div>

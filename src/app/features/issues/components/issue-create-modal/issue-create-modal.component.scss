@@ -1,0 +1,14 @@
+@import "src/assets/variables.scss";
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+
+  button:first-of-type {
+    margin-right: 1rem;
+  }
+  button:disabled {
+    color: #fff;
+    background-color: lighten($primary, 30%);
+  }
+}

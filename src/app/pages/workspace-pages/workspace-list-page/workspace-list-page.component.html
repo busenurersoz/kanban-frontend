@@ -1,0 +1,94 @@
+<div class="projects-header">
+  <h1>Workspaces</h1>
+  <button nz-button nzType="primary" routerLink="/workspaces/new">
+    Create Workspace
+  </button>
+</div>
+<div class="projects-content">
+  <nz-alert
+    *ngIf="workspacesError$ | async as errorMsg"
+    nzType="error"
+    nzMessage="Projects could not be loaded"
+    [nzDescription]="errorMsg"
+    nzShowIcon
+    nzCloseable
+  ></nz-alert>
+  <form nz-form [nzLayout]="'inline'" [formGroup]="workspacesForm">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzSuffixIcon="search">
+          <input formControlName="search" nz-input />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+
+  <nz-table
+    #workspacesTable
+    [nzData]="workspaces$ | async"
+    nzSize="middle"
+    [nzPageSize]="5"
+    nzHideOnSinglePage
+  >
+    <thead>
+      <tr>
+        <th
+          [nzSortOrder]="null"
+          [nzSortDirections]="['ascend', 'descend', null]"
+          [nzSortFn]="sortByNameFn"
+        >
+          Name
+        </th>
+        <th
+          [nzSortOrder]="null"
+          [nzSortDirections]="['ascend', 'descend', null]"
+          [nzSortFn]="sortByKeyFn"
+        >
+          Key
+        </th>
+        <th>Privacy</th>
+        <th
+          style="width: 40%"
+          [nzSortOrder]="null"
+          [nzSortDirections]="['ascend', 'descend', null]"
+        >
+          Description
+        </th>
+        <!-- <th class="text-center" style="width: 15%">Board</th> -->
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of workspacesTable.data">
+        <td class="hover" (click)="gotToProjects(data.id)">
+          <div class="project-info">
+            <!-- <img [src]="data.avatarUrl" alt="Project logo" /> -->
+            <span>{{ data.name }}</span>
+          </div>
+        </td>
+        <td>{{ data.key | uppercase }}</td>
+        <td class="white-color text-xs font-italic">
+          <span *ngIf="!data.openAccess" class="warn-back rounded-lg p-1">
+            Private
+          </span>
+          <span *ngIf="data.openAccess" class="success-back rounded-lg p-1">
+            Public
+          </span>
+        </td>
+        <td>
+          <p>{{ data.description }}</p>
+        </td>
+        <!-- <td class="text-center text-lg">
+          <i
+            class="fa-solid fa-square-kanban px-2 pointer"
+            matTooltip="Board"
+            (click)="goToBoard(data.id)"
+          ></i>
+        </td> -->
+        <td nzAlign="right">
+          <app-workspace-actions [workspace]="data"></app-workspace-actions>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

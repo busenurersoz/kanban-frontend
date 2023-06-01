@@ -1,0 +1,22 @@
+<div *ngIf="currentWorkspace$ | async; else workspaceNotSelected">
+  <app-board-header
+    [currentWorkspace$]="currentWorkspace$"
+    [currentProject$]="currentProjects$"
+  ></app-board-header>
+  <!-- <nz-alert
+    *ngIf="issuesError$ | async as errorMsg"
+    nzType="error"
+    nzMessage="Issues could not be loaded"
+    [nzDescription]="errorMsg"
+    nzShowIcon
+    nzCloseable
+  ></nz-alert> -->
+  <!-- <app-board-filter [assignedUsers$]="assignees$"></app-board-filter> -->
+  <app-board-workspace></app-board-workspace>
+  <!-- <app-workspace-list-page></app-workspace-list-page> -->
+</div>
+
+<ng-template #workspaceNotSelected>
+  <!-- <project-not-selected></project-not-selected> -->
+  <!-- <app-workspace-not-selected></app-workspace-not-selected> -->
+</ng-template>

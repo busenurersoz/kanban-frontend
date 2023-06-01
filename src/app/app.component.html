@@ -1,0 +1,76 @@
+<nz-layout class="app-layout">
+  <nz-header>
+    <app-navigation-toolbar
+      [workspaces$]="workspaces$"
+      [projects$]="projects$"
+      [currentUser]="currentUser$ | async"
+    ></app-navigation-toolbar>
+  </nz-header>
+
+  <nz-layout>
+    <nz-sider
+      class="menu-sidebar"
+      nzCollapsible
+      nzWidth="256px"
+      nzBreakpoint="xl"
+      nzTheme="light"
+      [(nzCollapsed)]="isSidebarCollapsed"
+      (nzCollapsedChange)="onSidebarCollapsed($event)"
+    >
+      <app-navigation-sidebar
+        [workspaces$]="workspaces$"
+      ></app-navigation-sidebar>
+    </nz-sider>
+    <nz-layout>
+      <nz-content>
+        <ul class="d-flex pt-2 font-italic" style="list-style: none">
+          <i class="fa-duotone fa-house"></i>
+          <li
+            *ngIf="
+              router.url.includes('workspaces') ||
+              router.url.includes('/board/project/')
+            "
+          >
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a routerLink="/workspaces/all">Workspaces</a>
+          </li>
+          <li *ngIf="router.url === '/workspaces/new'">
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a routerLink="/workspaces/all">Create New</a>
+          </li>
+          <li
+            *ngIf="
+              router.url.includes('projects') ||
+              router.url.includes('/board/project/')
+            "
+          >
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a [routerLink]="'workspaces/' + currentWorkspaceId + '/projects'"
+              >Projects</a
+            >
+          </li>
+          <li *ngIf="router.url.includes('projects/new')">
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a [routerLink]="'workspaces/' + currentWorkspaceId + '/projects'"
+              >create New</a
+            >
+          </li>
+          <li *ngIf="router.url.includes('/workspaces/myWorkspace')">
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a [routerLink]="'workspaces/' + currentWorkspaceId + '/board'"
+              >My Workspace</a
+            >
+          </li>
+          <li *ngIf="router.url.includes('/board/project/')">
+            <i class="fa-light fa-chevron-right px-2"></i>
+            <a [routerLink]="'/projects/board/' + currentProjectId">Board</a>
+          </li>
+        </ul>
+        <router-outlet *ngIf="ready"></router-outlet>
+      </nz-content>
+      <!-- <nz-footer>Kanban Project Management ©2023 by</nz-footer> -->
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+
+<app-svg-definitions></app-svg-definitions>

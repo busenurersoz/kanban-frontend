@@ -1,0 +1,193 @@
+#board-workspace {
+  max-height: 75vh;
+  .kanban {
+    // display: inline-flex;
+    // width: 100%;
+    padding: 16px 10px;
+
+    .kanban-column {
+      width: 100%;
+      padding: 0.75rem /* 12px */;
+      margin-left: 0.75rem;
+      border-radius: 0.375rem;
+      // background-color: rgba(243, 244, 246, 1);
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .workspace-column-title {
+    display: block;
+    padding: 2px;
+    border-radius: 2px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+    min-height: 25px;
+    font-size: 12px;
+  }
+
+  .meetings {
+    height: 1200px;
+    .w-title {
+      background-color: #f24822;
+    }
+    .w-board {
+      border: 1px solid #f24822;
+      height: 100%;
+      padding: 10px;
+      position: relative;
+    }
+
+    ul {
+      position: absolute;
+      width: 90%;
+      padding: 0 5px;
+      list-style-type: none;
+      max-height: 80%;
+      overflow-y: auto;
+    }
+
+    .issue-card {
+      border: 2px solid green !important;
+    }
+  }
+
+  .to-do {
+    height: 650px;
+
+    .w-title {
+      background-color: #9747ff;
+    }
+    .w-board {
+      border: 1px solid #9747ff;
+      height: 85%;
+      padding: 0.8rem;
+      position: relative;
+    }
+
+    ul {
+      position: absolute;
+      width: 90%;
+      padding: 0 5px;
+      list-style-type: none;
+      max-height: 70%;
+      overflow-y: auto;
+    }
+
+    .todo {
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border: 2px solid #a76ef1;
+      border-radius: 5px;
+      margin-top: 2px;
+      background-color: white;
+    }
+  }
+
+  .progresss {
+    height: 400px;
+    .w-title {
+      background-color: #ffa629;
+    }
+    .w-board {
+      border: 1px solid #ffa629;
+      height: 70%;
+      position: relative;
+      padding: 5px;
+    }
+
+    ul {
+      position: absolute;
+      list-style-type: none;
+      border: 2px solid gray;
+      border-radius: 5px;
+      background-color: white;
+    }
+  }
+
+  .my-notes {
+    height: 550px;
+    .w-title {
+      background-color: #0d99ff;
+    }
+    .w-board {
+      border: 1px solid #0d99ff;
+      height: 100%;
+      padding: 0.8rem;
+      position: relative;
+    }
+
+    ul {
+      position: absolute;
+      width: 90%;
+      padding: 0 5px;
+      list-style-type: none;
+      max-height: 70%;
+      overflow-y: auto;
+    }
+
+    .note {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 2px solid #699ec5;
+      border-radius: 5px;
+      margin-top: 2px;
+      background-color: white;
+    }
+  }
+
+  .up-working-works {
+    height: 800px;
+
+    .w-title {
+      background-color: #14ae5c;
+    }
+    .w-board {
+      border: 1px solid #14ae5c;
+      height: 100%;
+      position: relative;
+      padding: 10px;
+    }
+
+    ul {
+      position: absolute;
+      width: 90%;
+      padding: 0 5px;
+      list-style-type: none;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+  }
+
+  .slot {
+    height: 15px;
+    width: 15px;
+    background-color: #cbcbc7;
+  }
+
+  .slot-active {
+    background-color: #4d4d4c !important;
+  }
+
+  .createNewButton {
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: #5c5959;
+    padding: 0;
+    background: transparent;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.2); /* Adjust the scale value as needed */
+  }
+
+  .w-board {
+    background-color: #f3f4f6 !important;
+  }
+}

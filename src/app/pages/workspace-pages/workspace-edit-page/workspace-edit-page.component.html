@@ -1,0 +1,19 @@
+<div
+  *ngIf="
+    currentWorkspace$ | async as selectedWorkspace;
+    else projectNotSelected
+  "
+>
+  <app-workspace-header
+    [subTitle]="'Workspace settings'"
+    [title]="'Edit Workspace'"
+  ></app-workspace-header>
+  <app-workspace-form
+    [currentWorkspace]="selectedWorkspace"
+    [editMode]="true"
+  ></app-workspace-form>
+</div>
+
+<ng-template #projectNotSelected>
+  <app-workspace-not-selected></app-workspace-not-selected>
+</ng-template>

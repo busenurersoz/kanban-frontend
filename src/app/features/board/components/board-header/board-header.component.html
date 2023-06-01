@@ -1,0 +1,23 @@
+<h2 class="px-4">
+  {{ (currentProject$ | async).name }} <span class="pl-1">Project</span>
+</h2>
+<p class="d-flex justify-content-between px-4">
+  <span
+    >Filters:
+    <button nz-button class="gray-back mx-1" [class.active-back]="true">
+      Only My Tasks
+    </button>
+    <button nz-button class="gray-back">Recently Updated</button>
+  </span>
+
+  <span class="create-issue-button">
+    <button
+      nz-button
+      nzType="primary"
+      (click)="openCreateIssueModal()"
+      [disabled]="(isCurrentWorkspace$ | async) === false"
+    >
+      Create Issue
+    </button>
+  </span>
+</p>
