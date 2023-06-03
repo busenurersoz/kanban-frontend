@@ -18,11 +18,11 @@ export class IssueStatusComponent implements OnInit {
   @Input() issue: Issue;
 
   statusFeedback = {
-    [IssueStatus.BACKLOG]: 'btn-secondary',
-    [IssueStatus.IN_PROGRESS]: 'btn-secondary',
-    [IssueStatus.TEST]: 'btn-primary',
-    [IssueStatus.IN_REVIEW]: 'btn-primary',
-    [IssueStatus.DONE]: 'btn-success',
+    [IssueStatus.BACKLOG]: 'btn btn-backlog',
+    [IssueStatus.IN_PROGRESS]: 'btn btn-progress ',
+    [IssueStatus.TEST]: 'btn btn-test',
+    [IssueStatus.IN_REVIEW]: 'btn btn-in-review',
+    [IssueStatus.DONE]: 'btn btn-done',
   };
 
   issueStatuses: IssueStatusValueLabel[];
@@ -30,6 +30,7 @@ export class IssueStatusComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    console.log();
     this.issueStatuses = [
       new IssueStatusValueLabel(IssueStatus.BACKLOG),
       new IssueStatusValueLabel(IssueStatus.IN_PROGRESS),
@@ -40,6 +41,7 @@ export class IssueStatusComponent implements OnInit {
   }
 
   updateIssue(status: IssueStatus) {
+    this.issue = { ...this.issue, status };
     this.store
       .select(getIssuesCountByStatus, { status })
       .pipe(take(1))

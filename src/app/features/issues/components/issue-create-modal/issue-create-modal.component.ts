@@ -121,6 +121,7 @@ export class IssueCreateModalComponent implements OnInit, OnDestroy {
       projectId: [this.issue?.projectId ?? this.currentProjectId],
       projectKey: [this.issue?.projectKey ?? this.currentProjectKey],
       type: [this.issue?.type ?? 'Story', Validators.required],
+      status: [this.issue?.status],
       priority: [
         this.issue?.priority ?? IssuePriority.MEDIUM,
         Validators.required,

@@ -149,9 +149,9 @@ export class BoardWorkspaceComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.today.setHours(0, 0, 0, 0);
-    this.tomorrow.setDate(this.tomorrow.getDate() + 2);
-    this.tomorrow.setHours(0, 0, 0, 0);
+    this.today.setHours(3, 0, 0, 0);
+    this.tomorrow.setDate(this.tomorrow.getDate() + 1);
+    this.tomorrow.setHours(2, 59, 59, 999);
 
     const inputDate = new Date(this.today);
     const dayOfWeek = inputDate.getDay();

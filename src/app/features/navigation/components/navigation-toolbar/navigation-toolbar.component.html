@@ -1,7 +1,7 @@
 <div class="app-header">
   <div class="logo" routerLink="/">
     <img src="assets/logo.png" alt="Project logo" />
-    <span>Projectopia</span>
+    <span>Kanban Project Management</span>
   </div>
 
   <div class="nav-options" *ngIf="projects$ | async">
@@ -124,14 +124,13 @@
           <span>Profile</span>
           <span class="not-implemented">Not implemented</span>
         </li>
-        <li nz-menu-item class="toggle-on-hover">
+        <!-- <li nz-menu-item class="toggle-on-hover">
           <span>Account settings</span>
           <span class="not-implemented">Not implemented</span>
-        </li>
+        </li> -->
         <nz-divider></nz-divider>
-        <li nz-menu-item class="toggle-on-hover">
+        <li nz-menu-item class="toggle-on-hover" (click)="logout()">
           <span>Log out</span>
-          <span class="not-implemented">Not implemented</span>
         </li>
       </ul>
     </nz-dropdown-menu>

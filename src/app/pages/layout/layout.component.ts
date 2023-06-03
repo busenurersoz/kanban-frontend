@@ -1,45 +1,36 @@
-import {
-  getCurrentProject,
-  getProjectsByWorkspaceId,
-} from '@features/project/state/project.selectors';
-import { getCurrentWorkspace } from '@features/workspace/state/workspace.selectors';
-import {
-  loadIssues,
-  loadMeetingIssues,
-} from './features/issues/state/actions/issue-page.actions';
-import { getWorkspaces } from './features/workspace/state/workspace.selectors';
-import { Workspace } from '@core/interfaces/workspace';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-
-import { Store } from '@ngrx/store';
-
-import { Subject, Observable } from 'rxjs';
-import { map, take, takeUntil } from 'rxjs/operators';
-
-import { NavigationService } from '@features/navigation/services/navigation.service';
-import { AppState } from '@core/interfaces/app.state';
-import { User } from '@core/interfaces/user';
-import { getCurrentUser } from '@features/user/state/user.selectors';
-import { loadUsers } from '@features/user/state/actions/user.actions';
-import {
-  loadWorkspaces,
-  setCurrentWorkspace,
-} from '@features/workspace/state/actions/workspace-page.actions';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppState } from '@core/interfaces/app.state';
+import { Project } from '@core/interfaces/project';
+import { User } from '@core/interfaces/user';
+import { Workspace } from '@core/interfaces/workspace';
+import { NavigationService } from '@features/navigation/services/navigation.service';
 import {
   loadProjects,
   setCurrentProject,
 } from '@features/project/state/actions/project-page.actions';
-import { Project } from '@core/interfaces/project';
-import { clearAllFilters } from '@features/board/state/filter.actions';
-import { AuthService } from './pages/auth/auth.service';
+import { getProjectsByWorkspaceId } from '@features/project/state/project.selectors';
+import { loadUsers } from '@features/user/state/actions/user.actions';
+import { getCurrentUser } from '@features/user/state/user.selectors';
+import {
+  setCurrentWorkspace,
+  loadWorkspaces,
+} from '@features/workspace/state/actions/workspace-page.actions';
+import {
+  getCurrentWorkspace,
+  getWorkspaces,
+} from '@features/workspace/state/workspace.selectors';
+import { Store } from '@ngrx/store';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class LayoutComponent implements OnInit, OnDestroy {
   private subsNotifier = new Subject();
   workspaces$: Observable<Workspace[]>;
   projects$: Observable<Project[]>;

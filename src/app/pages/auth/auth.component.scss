@@ -1,0 +1,58 @@
+@import "src/assets/variables.scss";
+
+.auth {
+  padding-top: 5rem;
+}
+.box {
+  padding: 2rem;
+  min-width: 400px;
+  /* border: 2px solid grey; */
+  border-radius: 17px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.projectInfoBox {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px 24px;
+
+  .project-form h1 {
+    margin-top: 1rem;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-start;
+
+  button:first-of-type {
+    margin-right: 1rem;
+  }
+  button:disabled {
+    color: #fff;
+    background-color: lighten($primary, 30%);
+  }
+}
+
+.default-form-item {
+  max-width: 400px;
+}
+
+input {
+  text-overflow: ellipsis;
+}
+
+.input-key {
+  text-transform: uppercase;
+}

@@ -26,12 +26,15 @@
       <issue-title [issue]="issue"></issue-title>
       <nz-form-item>
         <nz-form-label class="issue-deadline">DeadLine</nz-form-label>
-        <nz-form-control nzHasFeedback>
+        <!-- <nz-form-control nzHasFeedback>
           <nz-date-picker
             [(ngModel)]="issue.deadline"
             disabled
           ></nz-date-picker>
-        </nz-form-control>
+        </nz-form-control> -->
+        <span style="padding-top: 5px">{{
+          issue.deadline | date : "short"
+        }}</span>
       </nz-form-item>
       <issue-description [issue]="issue"></issue-description>
       <issue-comments [issue]="issue"></issue-comments>

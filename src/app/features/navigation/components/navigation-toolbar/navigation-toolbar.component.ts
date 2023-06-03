@@ -20,6 +20,7 @@ import { isCurrentProject } from '@features/project/state/project.selectors';
 import * as fromFilterActions from '@features/board/state/filter.actions';
 import { setCurrentWorkspace } from '@features/workspace/state/actions/workspace-page.actions';
 import { loadIssues } from '@features/issues/state/actions/issue-page.actions';
+import { AuthService } from 'src/app/pages/auth/auth.service';
 
 @Component({
   selector: 'app-navigation-toolbar',
@@ -40,7 +41,8 @@ export class NavigationToolbarComponent implements OnInit, OnDestroy {
     private navigationService: NavigationService,
     private store: Store<AppState>,
     private modalService: NzModalService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +82,10 @@ export class NavigationToolbarComponent implements OnInit, OnDestroy {
       nzMaskClosable: false,
       nzWidth: 700,
     });
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

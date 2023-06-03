@@ -30,6 +30,7 @@ import * as fromFilterSelectors from '@features/board/state/filter.selectors';
 import * as fromFilter from '@features/board/state/filter.reducer';
 import * as fromUserSelectors from '@features/user/state/user.selectors';
 import { DateUtil } from '@core/utils/date';
+import { loadUpcommingIssues } from '@features/issues/state/actions/issue-page.actions';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -107,6 +108,8 @@ export class BoardKanbanColumnComponent implements OnInit, OnDestroy {
       );
       newIssue.status = event.container.id as IssueStatus;
       this.store.dispatch(IssuePageActions.updateIssue({ issue: newIssue }));
+      this.store.dispatch(loadUpcommingIssues());
+    
     }
   }
 
