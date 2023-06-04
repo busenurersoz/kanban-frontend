@@ -76,7 +76,7 @@
           </span>
         </td>
         <td>
-          <p>{{ data.description }}</p>
+          <p>{{  data.description?.ops?.length > 0 ? data.description.ops[0]['insert']: '-' }}</p>
         </td>
         <!-- <td class="text-center text-lg">
           <i

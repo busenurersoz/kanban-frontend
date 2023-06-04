@@ -7,7 +7,7 @@ export interface Workspace {
   key: string;
   url?: string;
   openAccess: boolean;
-  description: string;
+  description: {ops:Array<any>};
   projects: Project[];
   createdAt: string;
   updatedAt: string;
